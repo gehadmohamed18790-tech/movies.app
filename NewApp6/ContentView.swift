@@ -1,16 +1,9 @@
-//
-//  ContentView.swift
-//  NewApp6
-//
-//  Created by Gehad Mohamed on 23/12/2025.
-//
+
 import SwiftUI
 import Foundation
 import Combine
 
-// ==========================
-// MARK: - Model
-// ==========================
+
 struct Film: Codable, Identifiable {
     let id: String
     let title: String
@@ -28,18 +21,14 @@ struct Film: Codable, Identifiable {
     }
 }
 
-// ==========================
-// MARK: - API
-// ==========================
+
 func fetchFilms() async throws -> [Film] {
     let url = URL(string: "https://ghibliapi.vercel.app/films")!
     let (data, _) = try await URLSession.shared.data(from: url)
     return try JSONDecoder().decode([Film].self, from: data)
 }
 
-// ==========================
-// MARK: - ViewModel
-// ==========================
+
 @MainActor
 class FilmViewModel: ObservableObject {
     @Published var films: [Film] = []
@@ -72,9 +61,7 @@ class FilmViewModel: ObservableObject {
     }
 }
 
-// ==========================
-// MARK: - Main Tab View
-// ==========================
+
 struct MainTabView: View {
     @StateObject private var viewModel = FilmViewModel()
 
@@ -101,9 +88,7 @@ struct MainTabView: View {
     }
 }
 
-// ==========================
-// MARK: - Films View
-// ==========================
+
 struct FilmsView: View {
     @ObservedObject var viewModel: FilmViewModel
 
@@ -158,9 +143,7 @@ struct FilmsView: View {
     }
 }
 
-// ==========================
-// MARK: - Favorite View
-// ==========================
+
 struct FavoriteView: View {
     @ObservedObject var viewModel: FilmViewModel
 
@@ -198,9 +181,7 @@ struct FavoriteView: View {
     }
 }
 
-// ==========================
-// MARK: - Film Detail View
-// ==========================
+
 struct FilmDetailView: View {
     let film: Film
 
@@ -235,18 +216,7 @@ struct FilmDetailView: View {
     }
 }
 
-// ==========================
-// MARK: - Settings View
-// ==========================
 
-// ==========================
-// MARK: - App Entry
-// ==========================
-
-
-// ==========================
-// MARK: - Preview
-// ==========================
 #Preview {
     MainTabView()
 }
