@@ -38,11 +38,11 @@ class _NotesPageState extends State<NotesPage> {
           backgroundColor: Colors.grey,
         ),
 
-        // Floating button مع إضافة النوتة
+     
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.add),
           onPressed: () async {
-            // نفتح AddNoteScreen ونستنى النوتة الجديدة
+            
             final newNote = await Navigator.push(
               context,
               MaterialPageRoute(
@@ -50,10 +50,10 @@ class _NotesPageState extends State<NotesPage> {
               ),
             );
 
-            // لو المستخدم كتب حاجة
+            // 
             if (newNote != null) {
               setState(() {
-                notes.add(newNote); // إضافة النوتة للقائمة
+                notes.add(newNote); 
               });
             }
           },
